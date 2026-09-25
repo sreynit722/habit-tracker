@@ -1,0 +1,353 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
+
+:root {
+  --ink: #17221c;
+  --muted: #708077;
+  --paper: #f4f2eb;
+  --panel: #fffdf7;
+  --line: #d8ded5;
+  --mint: #b7e6c5;
+  --deep-mint: #397c52;
+  --coral: #e77757;
+}
+* {
+  box-sizing: border-box;
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+.auth-layout,
+.tracker-layout {
+  width: min(1080px, calc(100% - 48px));
+  margin: 0 auto;
+}
+.auth-layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 10%;
+}
+.auth-copy {
+  padding: 60px 0;
+}
+.auth-copy h1,
+.tracker-heading h1 {
+  font-size: clamp(2.8rem, 6vw, 5.8rem);
+  line-height: 0.96;
+  letter-spacing: -0.07em;
+  max-width: 650px;
+  margin: 18px 0 26px;
+}
+.auth-copy > p:last-child {
+  color: var(--muted);
+  font-size: 1.15rem;
+  max-width: 330px;
+}
+.eyebrow {
+  color: var(--deep-mint);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.auth-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 42px;
+  box-shadow: 16px 18px 0 var(--mint);
+}
+.auth-panel h2 {
+  font-size: 1.8rem;
+  margin: 8px 0 30px;
+}
+.auth-form,
+.habit-form {
+  display: grid;
+  gap: 10px;
+}
+.auth-form label,
+.habit-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: #fff;
+  color: var(--ink);
+  padding: 13px 14px;
+  outline: none;
+}
+input:focus {
+  border-color: var(--deep-mint);
+  box-shadow: 0 0 0 3px rgba(57, 124, 82, 0.14);
+}
+.button {
+  border: 0;
+  border-radius: 3px;
+  padding: 13px 18px;
+  font-weight: 700;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.button:hover {
+  transform: translateY(-2px);
+}
+.button-primary {
+  color: #fff;
+  background: var(--deep-mint);
+  margin-top: 8px;
+  box-shadow: 4px 4px 0 var(--mint);
+}
+.button-quiet {
+  color: var(--deep-mint);
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 9px 13px;
+}
+.auth-switch {
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.auth-switch button {
+  border: 0;
+  background: none;
+  color: var(--deep-mint);
+  font-weight: 700;
+  padding: 0;
+}
+.protected-shell {
+  min-height: 100vh;
+}
+.app-header {
+  width: min(1080px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 27px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+}
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: var(--ink);
+  background: var(--mint);
+}
+.tracker-layout {
+  padding: 65px 0 100px;
+}
+.tracker-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 38px;
+}
+.tracker-heading h1 {
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  margin-bottom: 14px;
+}
+.muted,
+.section-heading span {
+  color: var(--muted);
+}
+.progress-note {
+  min-width: 120px;
+  padding-bottom: 10px;
+  text-align: right;
+}
+.progress-note strong {
+  display: block;
+  color: var(--coral);
+  font-size: 3rem;
+  line-height: 1;
+}
+.progress-note span {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.habit-form {
+  max-width: 680px;
+  padding: 35px 0;
+}
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+.form-row .button {
+  flex: 0 0 auto;
+  margin-top: 0;
+}
+.habit-section {
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+  max-width: 680px;
+}
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.section-heading h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+.habit-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.habit-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid var(--line);
+  padding: 17px 0;
+}
+.habit-item.is-complete span {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+.habit-check {
+  display: grid;
+  place-items: center;
+  width: 23px;
+  height: 23px;
+  padding: 0;
+  border: 1px solid var(--deep-mint);
+  border-radius: 50%;
+  color: #fff;
+  background: transparent;
+  font-size: 0.8rem;
+}
+.is-complete .habit-check {
+  background: var(--deep-mint);
+}
+.empty-state {
+  color: var(--muted);
+  padding: 18px 0;
+}
+.form-error {
+  color: #b84432;
+  font-size: 0.85rem;
+  margin: 4px 0;
+}
+.form-success {
+  color: var(--deep-mint);
+  font-size: 0.85rem;
+  margin: 4px 0;
+}
+.status-screen {
+  display: grid;
+  min-height: 100vh;
+  place-content: center;
+  gap: 8px;
+  width: min(600px, calc(100% - 48px));
+  margin: 0 auto;
+}
+.status-screen h1,
+.status-screen p {
+  margin: 0;
+}
+.habit-action {
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  color: var(--deep-mint);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px;
+}
+.habit-delete {
+  margin-left: 0;
+  color: var(--coral);
+}
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(23, 34, 28, 0.42);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  z-index: 20;
+}
+.modal-card {
+  width: min(100%, 440px);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 24px 60px rgba(23, 34, 28, 0.18);
+  padding: 28px;
+}
+.modal-card h3 {
+  margin: 0 0 18px;
+  font-size: 1.5rem;
+}
+.modal-form {
+  padding: 0;
+}
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}
+.modal-actions .button {
+  margin-top: 0;
+}
+@media (max-width: 700px) {
+  .auth-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 36px 0;
+  }
+  .auth-copy {
+    padding: 0;
+  }
+  .auth-copy h1 {
+    font-size: 3.2rem;
+  }
+  .auth-panel {
+    padding: 28px;
+    box-shadow: 8px 9px 0 var(--mint);
+  }
+  .tracker-layout {
+    padding-top: 35px;
+  }
+  .tracker-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+  .progress-note {
+    text-align: left;
+  }
+  .form-row {
+    flex-direction: column;
+  }
+  .form-row .button {
+    width: 100%;
+  }
+}
