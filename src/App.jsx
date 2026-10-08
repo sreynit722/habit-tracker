@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ForgotPassword from "./pages/ForgotPassword";
 import Login from "./pages/Login";
+import ResetPassword from "./pages/ResetPassword";
 import Signup from "./pages/Signup";
 import Tracker from "./pages/Tracker";
 import { isSupabaseConfigured, supabase } from "./lib/supabase";
@@ -65,21 +67,36 @@ function App() {
     );
   }
 
-  if (user && path !== "/tracker") navigate("/tracker");
+  if (user && path !== "/tracker" && path !== "/reset-password")
+    navigate("/tracker");
   if (!user && path === "/tracker") {
     window.history.replaceState({}, "", "/login");
-    return <Login onSwitchToSignup={() => navigate("/signup")} />;
+    return (
+      <Login
+        onSwitchToSignup={() => navigate("/signup")}
+        onForgotPassword={() => navigate("/forgot-password")}
+      />
+    );
   }
 
   if (path === "/signup")
     return <Signup onSwitchToLogin={() => navigate("/login")} />;
+  if (path === "/forgot-password")
+    return <ForgotPassword onBackToLogin={() => navigate("/login")} />;
+  if (path === "/reset-password")
+    return <ResetPassword onDone={() => navigate("/tracker")} />;
   if (path === "/tracker")
     return (
       <ProtectedRoute user={user} onLogout={handleLogout}>
         <Tracker user={user} />
       </ProtectedRoute>
     );
-  return <Login onSwitchToSignup={() => navigate("/signup")} />;
+  return (
+    <Login
+      onSwitchToSignup={() => navigate("/signup")}
+      onForgotPassword={() => navigate("/forgot-password")}
+    />
+  );
 }
 
 export default App;

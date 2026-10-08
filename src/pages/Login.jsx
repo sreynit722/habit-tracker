@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { supabase } from "../lib/supabase";
 
-function Login({ onSwitchToSignup }) {
+function Login({ onSwitchToSignup, onForgotPassword }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -52,6 +52,13 @@ function Login({ onSwitchToSignup }) {
             minLength={6}
             required
           />
+          <button
+            className="auth-link"
+            type="button"
+            onClick={onForgotPassword}
+          >
+            Forgot password?
+          </button>
           {error && (
             <p className="form-error" role="alert">
               {error}

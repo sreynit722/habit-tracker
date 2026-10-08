@@ -22,7 +22,7 @@ A React app built with Vite and Supabase. Supabase provides authentication and p
    - `VITE_HABIT_TRACKER_SUPABASE_ANON_KEY`: the Supabase anon/publishable key
 
    Set the variables for every environment where the app should work (Production, Preview, and/or Development). These `VITE_` variables are included in the browser build, so only use the public anon/publishable key—not a Supabase `service_role` key.
-4. In Supabase **Authentication → URL Configuration**, set the Site URL to the deployed Vercel URL and add that URL (and any preview URLs you use) to the Redirect URLs allowlist.
+4. In Supabase **Authentication → URL Configuration**, set the Site URL to the deployed Vercel URL and add that URL, `/reset-password` redirect URL, and any preview URLs you use to the Redirect URLs allowlist.
 5. Redeploy the Vercel project after setting or changing environment variables. Vite reads them during the build.
 
 `vercel.json` routes browser-side paths back to the Vite app, so refreshing a route such as `/tracker` works on Vercel.
