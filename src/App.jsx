@@ -58,7 +58,8 @@ function App() {
       <main className="status-screen">
         <h1>Supabase is not configured</h1>
         <p>
-          Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to your .env file.
+          Add VITE_HABIT_TRACKER_SUPABASE_URL and
+          VITE_HABIT_TRACKER_SUPABASE_ANON_KEY to your .env file.
         </p>
       </main>
     );

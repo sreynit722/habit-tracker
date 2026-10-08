@@ -1,75 +1,35 @@
-# React + TypeScript + Vite
+# Habit Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React app built with Vite and Supabase. Supabase provides authentication and persistent storage for user habits.
 
-Currently, two official plugins are available:
+## Local development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Create a Supabase project and run [`supabase/schema.sql`](./supabase/schema.sql) in its SQL Editor.
+2. Copy `.env.example` to `.env` and fill in your Supabase project URL and anon/publishable key. Find both in the Supabase project API settings.
+3. Install dependencies and start the app:
 
-## React Compiler
+   ```sh
+   npm install
+   npm run dev
+   ```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Deploy to Vercel
 
-## Expanding the ESLint configuration
+1. Import this repository into Vercel. Vercel detects Vite; use `npm run build` as the build command and `dist` as the output directory.
+2. In the Supabase project used by this deployment, run [`supabase/schema.sql`](./supabase/schema.sql) in the SQL Editor if the habits table and its row-level security policies have not been created yet. The app's habit data is stored in this Supabase project, not in Vercel's filesystem.
+3. In **Vercel → Project → Settings → Environment Variables**, add:
+   - `VITE_HABIT_TRACKER_SUPABASE_URL`: the Supabase project URL
+   - `VITE_HABIT_TRACKER_SUPABASE_ANON_KEY`: the Supabase anon/publishable key
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+   Set the variables for every environment where the app should work (Production, Preview, and/or Development). These `VITE_` variables are included in the browser build, so only use the public anon/publishable key—not a Supabase `service_role` key.
+4. In Supabase **Authentication → URL Configuration**, set the Site URL to the deployed Vercel URL and add that URL (and any preview URLs you use) to the Redirect URLs allowlist.
+5. Redeploy the Vercel project after setting or changing environment variables. Vite reads them during the build.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+`vercel.json` routes browser-side paths back to the Vite app, so refreshing a route such as `/tracker` works on Vercel.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Scripts
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
-
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+- `npm run dev` — start the local development server
+- `npm run build` — type-check and build the production app
+- `npm run lint` — run ESLint
+- `npm run preview` — preview the production build locally
